@@ -16,7 +16,7 @@ void Rock::draw(N5110 &lcd) {
 }
 
 void Rock::update() {
-  if (_x < 1) {
+  if (_x > 1) {
     _x += _velocity.x;
   } else {
     _x = 75 - _size / 2;
