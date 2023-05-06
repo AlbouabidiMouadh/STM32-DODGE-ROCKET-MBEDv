@@ -27,5 +27,7 @@ private:
   int _x;
   int _y;
   int _score ;
+  bool _jump = false;
+  int _i = 0;
 };
 #endif
