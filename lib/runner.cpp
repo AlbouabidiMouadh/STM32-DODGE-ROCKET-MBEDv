@@ -24,7 +24,7 @@ void Runner::update(UserInput input)
 {
   // updating the runner position
 
-  if (input.d == N and _jump == false) {_jump == true}
+  if (input.d == N and _jump == false) {_jump = true;}
   if(_jump == true)
   {
     if (_i < 5)
@@ -38,7 +38,7 @@ void Runner::update(UserInput input)
     }
     else {
       _i = 0;
-      _jump = false
+      _jump = false;
     }
   }
   
