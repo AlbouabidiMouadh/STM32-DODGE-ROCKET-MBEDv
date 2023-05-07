@@ -14,7 +14,7 @@ void RunnerEngine::init(int runnerSize, int runnerSpeed, int rockSize,
 int RunnerEngine::update(UserInput input, N5110 &lcd)
 {
 
-  if (input.d)
+  if (input.d != CENTRE)
   {
     for (int i = 0; i < _rock.get_size() + 3; i++)
     {
