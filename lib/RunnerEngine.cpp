@@ -18,16 +18,6 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
   {
     for (int i = 0; i < _rock.get_size() + 3; i++)
     {
-      _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
-      _runner.update();
-      _rock.update();
-      lcd.clear();
-      draw(lcd);
-      lcd.refresh();
-      check_rock_collision();
-    }
-    for (int i = 0; i < _rock.get_size() + 3; i++)
-    {
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
       _runner.update();
       _rock.update();
@@ -36,6 +26,16 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
       lcd.refresh();
       check_rock_collision();
     }
+  }
+  for (int i = 0; i < _rock.get_size() + 3; i++)
+  {
+    _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
+    _runner.update();
+    _rock.update();
+    lcd.clear();
+    draw(lcd);
+    lcd.refresh();
+    check_rock_collision();
   }
   _runner.update();
   _rock.update();
