@@ -1,5 +1,4 @@
 
-
 ///////////// includes /////////////////////
 #include "Joystick.h"
 #include "N5110.h"
@@ -10,21 +9,24 @@
 ///////////// defines /////////////////////
 
 #define ROCK_SIZE 4
-#define ROCK_SPEED 4
+#define ROCK_SPEED 2
 #define RUNNER_SIZE 4
 #define RUNNER_SPEED 4
 
 ///////////// objects ///////////////////
+
 N5110 lcd(PC_7, PA_9, PB_10, PB_5, PB_3, PA_10);
 Joystick joystick(PC_1, PC_0);
 DigitalIn buttonA(BUTTON1); // onboard user button
 RunnerEngine Runner;
 
 ///////////// prototypes ///////////////
+
 void init();
 void render();
 void welcome();
 void game_over();
+
 ////////////////////////////////////////
 
 int main() {
@@ -58,7 +60,7 @@ void render() { // clear screen, re-draw and refresh
 }
 
 void welcome() { // splash screen
-  lcd.printString("     Dodge Rocket    ", 0, 1);
+  lcd.printString("     ROCK DODGE    ", 0, 1);
   lcd.printString("Press Nucleo", 0, 3);
   lcd.printString("Blue button", 0, 4);
   lcd.refresh();

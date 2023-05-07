@@ -20,45 +20,26 @@ void Runner::draw(N5110 &lcd)
   lcd.drawRect(_x, _y, _size, _size, FILL_BLACK);
 }
 
-void Runner::update(UserInput input)
+void Runner::update()
 {
-  // updating the runner position
-
-  if (input.d == N and _jump == false) {_jump = true;}
-  if(_jump == true)
-  {
-    if (_i < 5)
-    {
-      _i++;
-      _x += _i;
-    }
-    else if( _i < 10) {
-      _i++ ;
-      _x -= _i-5 ;
-    }
-    else {
-      _i = 0;
-      _jump = false;
-    }
-  }
-  
+  // updating the runner position  
 
   // update score
 
   add_score();
 }
 
-void Runner::jump()
-{
-  for (int i = 0; i < 10; i++)
-  {
-    if (i < 5)
-      _x = _x + 1;
-    else
-      _x = _x - 1;
-    thread_sleep_for(100);
-  }
-}
+// void Runner::jump()
+// {
+//   for (int i = 0; i < 10; i++)
+//   {
+//     if (i < 5)
+//       _x = _x + 1;
+//     else
+//       _x = _x - 1;
+//     thread_sleep_for(100);
+//   }
+// }
 
 void Runner::set_velocity(Position2D v)
 {

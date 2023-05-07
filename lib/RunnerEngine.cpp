@@ -2,7 +2,7 @@
 #include <cstring>
 #include <string>
 
-RunnerEngine::RunnerEngine() {  }
+RunnerEngine::RunnerEngine() {}
 
 void RunnerEngine::init(int runnerSize, int runnerSpeed, int rockSize,
                         int rockSpeed) {
@@ -11,7 +11,22 @@ void RunnerEngine::init(int runnerSize, int runnerSpeed, int rockSize,
 }
 
 int RunnerEngine::update(UserInput input) {
-  _runner.update(input);
+
+  if (input.d == N) {
+    for (int i = 0; i < 5; i++) {
+      _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
+      _runner.update();
+      _rock.update();
+      check_rock_collision();
+    }
+    for (int i = 0; i < 5; i++) {
+      _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
+      _runner.update();
+      _rock.update();
+      check_rock_collision();
+    }
+  }
+  _runner.update();
   _rock.update();
   check_rock_collision();
   return _runner.get_score();
@@ -41,4 +56,3 @@ bool RunnerEngine::check_rock_collision() {
     return false;
   }
 }
-

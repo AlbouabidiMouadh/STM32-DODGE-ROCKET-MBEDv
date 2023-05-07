@@ -11,8 +11,8 @@ public:
   Runner();
   void init(int size, int speed);
   void draw(N5110 &lcd);
-  void update(UserInput input);
-  void jump();
+  void update();
+//   void jump();
   void add_score();
   int get_score();
   void set_velocity(Position2D v);
