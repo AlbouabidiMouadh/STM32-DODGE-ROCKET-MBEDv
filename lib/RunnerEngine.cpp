@@ -5,24 +5,31 @@
 RunnerEngine::RunnerEngine() {}
 
 void RunnerEngine::init(int runnerSize, int runnerSpeed, int rockSize,
-                        int rockSpeed) {
+                        int rockSpeed)
+{
   _rock.init(rockSize, rockSpeed);
   _runner.init(runnerSize, runnerSpeed);
 }
 
-int RunnerEngine::update(UserInput input) {
+int RunnerEngine::update(UserInput input)
+{
 
-  if (input.d == N) {
-    for (int i = 0; i < 5; i++) {
+  if (input.d == N)
+  {
+    for (int i = 0; i < 5; i++)
+    {
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
       _runner.update();
       _rock.update();
+      draw();
       check_rock_collision();
     }
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++)
+    {
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
       _runner.update();
       _rock.update();
+      draw();
       check_rock_collision();
     }
   }
@@ -32,14 +39,16 @@ int RunnerEngine::update(UserInput input) {
   return _runner.get_score();
 }
 
-void RunnerEngine::draw(N5110 &lcd) {
+void RunnerEngine::draw(N5110 &lcd)
+{
   lcd.printString(to_string(_runner.get_score()).c_str(), WIDTH / 2, 10);
   lcd.drawLine(0, HEIGHT - 10, WIDTH - 1, HEIGHT - 10, 1);
   _runner.draw(lcd);
   _rock.draw(lcd);
 }
 
-bool RunnerEngine::check_rock_collision() {
+bool RunnerEngine::check_rock_collision()
+{
   Position2D rock_position = _rock.get_pos();
   Position2D rock_velocity = _rock.get_velocity();
   int rock_size = _rock.get_size();
@@ -50,9 +59,12 @@ bool RunnerEngine::check_rock_collision() {
 
   // checking if touched the runner
   if ((rock_position.x == (runner_position.x + runner_size)) and
-      (runner_position.y <= rock_position.y + rock_size)) {
+      (runner_position.y <= rock_position.y + rock_size))
+  {
     return true;
-  } else {
+  }
+  else
+  {
     return false;
   }
 }
