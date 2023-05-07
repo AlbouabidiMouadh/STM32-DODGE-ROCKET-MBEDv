@@ -31,7 +31,9 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
       _runner.update();
       _rock.update();
+      lcd.clear();
       draw(lcd);
+      lcd.refresh();
       check_rock_collision();
     }
   }
