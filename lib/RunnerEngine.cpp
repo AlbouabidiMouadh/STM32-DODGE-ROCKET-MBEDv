@@ -40,6 +40,9 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
   _runner.update();
   _rock.update();
   check_rock_collision();
+  lcd.clear();
+  draw(lcd);
+  lcd.refresh();
   return _runner.get_score();
 }
 

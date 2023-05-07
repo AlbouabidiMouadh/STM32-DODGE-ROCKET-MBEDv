@@ -66,7 +66,6 @@ void welcome() { // splash screen
   lcd.refresh();
 
   while (buttonA.read() == 1) {
-
     ThisThread::sleep_for(100ms);
   }
 }
