@@ -38,7 +38,7 @@ int main() {
   thread_sleep_for(1000 / fps); // and wait for one frame period - millseconds
   while (!Runner.check_rock_collision()) {
     UserInput input = {joystick.get_direction(), joystick.get_mag()};
-    scores = Runner.update(input); // update the game engine based on input
+    scores = Runner.update(input, lcd); // update the game engine based on input
     render();                     // draw frame on screen
     thread_sleep_for(1000 / fps); // and wait for one frame period - ms
   }
