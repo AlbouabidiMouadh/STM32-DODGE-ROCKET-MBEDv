@@ -60,7 +60,7 @@ void render() { // clear screen, re-draw and refresh
 }
 
 void welcome() { // splash screen
-  lcd.printString("     ROCK DODGE    ", 0, 1);
+  lcd.printString("ROCK DODGE    ", 0, 1);
   lcd.printString("Press Nucleo", 0, 3);
   lcd.printString("Blue button", 0, 4);
   lcd.refresh();
