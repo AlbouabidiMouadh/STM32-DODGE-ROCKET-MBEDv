@@ -16,9 +16,9 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
 
   if (input.d != CENTRE)
   {
-    for (int i = 0; i < _rock.get_size() + 3; i++)
+    for (int i = 0; i < _rock.get_size()*2 ; i++)
     {
-      _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 2});
+      _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
       _runner.update();
       _rock.update();
       lcd.clear();
@@ -27,9 +27,9 @@ int RunnerEngine::update(UserInput input, N5110 &lcd)
       check_rock_collision();
     }
   }
-  for (int i = 0; i < _rock.get_size() + 3; i++)
+  for (int i = 0; i < _rock.get_size()*2; i++)
   {
-    _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 2});
+    _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
     _runner.update();
     _rock.update();
     lcd.clear();
