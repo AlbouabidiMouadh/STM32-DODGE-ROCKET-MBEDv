@@ -11,7 +11,7 @@ void RunnerEngine::init(int runnerSize, int runnerSpeed, int rockSize,
   _runner.init(runnerSize, runnerSpeed);
 }
 
-int RunnerEngine::update(UserInput input)
+int RunnerEngine::update(UserInput input, N5110 &lcd)
 {
 
   if (input.d == N)
@@ -21,7 +21,7 @@ int RunnerEngine::update(UserInput input)
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y + 1});
       _runner.update();
       _rock.update();
-      draw();
+      draw(lcd);
       check_rock_collision();
     }
     for (int i = 0; i < 5; i++)
@@ -29,7 +29,7 @@ int RunnerEngine::update(UserInput input)
       _runner.set_pos({_runner.get_pos().x, _runner.get_pos().y - 1});
       _runner.update();
       _rock.update();
-      draw();
+      draw(lcd);
       check_rock_collision();
     }
   }

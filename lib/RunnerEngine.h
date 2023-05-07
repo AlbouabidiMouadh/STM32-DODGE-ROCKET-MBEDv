@@ -11,7 +11,7 @@ class RunnerEngine {
 public:
   RunnerEngine();
   void init(int runnerSize, int runnerSpeed, int rockSize, int rockSpeed);
-  int update(UserInput input);
+  int update(UserInput input, N5110 &lcd);
   void draw(N5110 &lcd);
   bool check_rock_collision();
 private:
