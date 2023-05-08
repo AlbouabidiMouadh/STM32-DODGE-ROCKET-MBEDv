@@ -5,7 +5,7 @@ Rock::Rock() {}
 void Rock::init(int size, int speed) {
   _size = size;
   _x = 75 - _size / 2;
-  _y = 28;
+  _y = 30;
   _velocity.x = speed;
   _velocity.y = speed;
 }
