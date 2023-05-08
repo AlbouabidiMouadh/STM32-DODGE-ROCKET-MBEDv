@@ -10,8 +10,8 @@
 
 #define ROCK_SIZE 4
 #define ROCK_SPEED 2
-#define RUNNER_SIZE 4
-#define RUNNER_SPEED 2
+#define RUNNER_SIZE 6
+#define RUNNER_SPEED 4
 
 ///////////// objects ///////////////////
 
@@ -37,6 +37,7 @@ int main() {
   int scores;
   thread_sleep_for(1000 / fps); // and wait for one frame period - millseconds
   while (!Runner.check_rock_collision()) {
+    Polar polar = {joystick.get_mag(), joystick.get_angle()};
     UserInput input = {joystick.get_direction(), joystick.get_mag()};
     scores = Runner.update(input, lcd); // update the game engine based on input
     render();                     // draw frame on screen

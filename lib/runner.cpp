@@ -2,11 +2,10 @@
 
 Runner::Runner() {}
 
-void Runner::init(int size, int speed)
-{
+void Runner::init(int size, int speed) {
   _size = size;
-  _x = 15 - _size / 2;
-  _y = 35 - _size / 2;
+  _x = 20 - _size / 2;
+  _y = 28;
   _velocity.x = speed;
   _velocity.y = speed;
   _score = 0;
@@ -14,15 +13,13 @@ void Runner::init(int size, int speed)
   int _i = 0;
 }
 
-void Runner::draw(N5110 &lcd)
-{
+void Runner::draw(N5110 &lcd) {
   // draw the runner function we are using the rectqngle for the prototype
-  lcd.drawRect(_x, _y, _size, _size, FILL_BLACK);
+  lcd.drawRect(_x, _y, _size / 2, _size, FILL_BLACK);
 }
 
-void Runner::update()
-{
-  // updating the runner position  
+void Runner::update() {
+  // updating the runner position
 
   // update score
 
@@ -41,16 +38,14 @@ void Runner::update()
 //   }
 // }
 
-void Runner::set_velocity(Position2D v)
-{
-  printf("Ball: Velocity\n");
+void Runner::set_velocity(Position2D v) {
+  printf("Runner: Velocity\n");
   _velocity.x = v.x;
   _velocity.y = v.y;
 }
 
-void Runner::set_pos(Position2D p)
-{
-  printf("Ball: Set Position\n");
+void Runner::set_pos(Position2D p) {
+  printf("Runner: Set Position\n");
   _x = p.x;
   _y = p.y;
 }
