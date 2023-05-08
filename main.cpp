@@ -11,7 +11,7 @@
 #define ROCK_SIZE 4
 #define ROCK_SPEED 2
 #define RUNNER_SIZE 4
-#define RUNNER_SPEED 4
+#define RUNNER_SPEED 2
 
 ///////////// objects ///////////////////
 
