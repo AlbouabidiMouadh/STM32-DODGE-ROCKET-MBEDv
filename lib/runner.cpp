@@ -5,7 +5,7 @@ Runner::Runner() {}
 void Runner::init(int size, int speed) {
   _size = size;
   _x = 20 - _size / 2;
-  _y = 28;
+  _y = 31;
   _velocity.x = speed;
   _velocity.y = speed;
   _score = 0;
