@@ -39,9 +39,18 @@ int main() {
   while (!Runner.check_rock_collision()) {
     Polar polar = {joystick.get_mag(), joystick.get_angle()};
     UserInput input = {joystick.get_direction(), joystick.get_mag()};
+    if (buttonA.read() == 0) {
+        ThisThread::sleep_for(100ms);
+      while (buttonA.read() == 1) {
+        lcd.clear();
+        lcd.printString("Game Paused", 10, 3);
+        lcd.refresh();
+        ThisThread::sleep_for(100ms);
+      }
+    }
     scores = Runner.update(input, lcd); // update the game engine based on input
-    render();                     // draw frame on screen
-    thread_sleep_for(1000 / fps); // and wait for one frame period - ms
+    render();                           // draw frame on screen
+    thread_sleep_for(1000 / fps);       // and wait for one frame period - ms
   }
 
   game_over();
