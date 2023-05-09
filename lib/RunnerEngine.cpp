@@ -61,9 +61,14 @@ bool RunnerEngine::check_rock_collision() {
   int runner_size = _runner.get_size();
 
   // checking if touched the runner
-  if (((rock_position.x <= (runner_position.x + runner_size-1)) and (rock_position.x >= (runner_position.x - runner_size))) and (runner_position.y <= rock_position.y + rock_size)) {
+  if (((rock_position.x <= (runner_position.x + runner_size - 1)) and
+       (rock_position.x >= (runner_position.x - runner_size))) and
+      (runner_position.y <= rock_position.y + rock_size)) {
     return true;
   } else {
     return false;
   }
 }
+
+void set_rock_size(int size) { _rock.set_size(size); }
+void set_rock_speed(int speed) { _rock.set_speed(speed); }

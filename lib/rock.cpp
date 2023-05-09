@@ -40,3 +40,8 @@ Position2D Rock::get_velocity() { return {_velocity.x, _velocity.y}; }
 Position2D Rock::get_pos() { return {_x, _y}; }
 
 int Rock::get_size() { return _size; }
+void Rock::set_size(int size) { _size = size; }
+void Rock::set_speed(int speed) {
+  _velocity.x = speed;
+  _velocity.y = speed;
+}

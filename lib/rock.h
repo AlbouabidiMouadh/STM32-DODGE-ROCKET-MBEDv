@@ -19,6 +19,8 @@ public:
     Position2D get_pos();
     int get_size();
     void set_pos(Position2D p);
+    void set_size(int size);
+    void set_speed(int speed);
     
 private:
 
