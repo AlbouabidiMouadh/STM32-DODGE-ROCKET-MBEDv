@@ -76,6 +76,7 @@ void welcome() { // splash screen
 
 void game_over() { // splash screen
   while (1) {
+    Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
     lcd.clear();
     lcd.printString("  Game Over ", 0, 2);
     lcd.refresh();
@@ -108,7 +109,8 @@ void game() {
       while (buttonA.read() == 1) {
         lcd.clear();
         lcd.printString("Game Paused", 10, 1);
-        lcd.printString("press blue button to resume", 10, 3);
+        lcd.printString("press blue ", 10, 3);
+        lcd.printString("button to resume", 5, 5);
         lcd.refresh();
         ThisThread::sleep_for(100ms);
       }
@@ -159,15 +161,15 @@ void settings() {
         // change the level of the game by changing the rock speed
         if (Level == "normal") {
           Level = "hard";
-          ROCK_SPEED += 2;
+          ROCK_SPEED += 1;
           Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "hard") {
           Level = "easy";
-          ROCK_SPEED -= 4;
+          ROCK_SPEED -= 2;
           Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "easy") {
           Level = "normal";
-          ROCK_SPEED += 2;
+          ROCK_SPEED += 1;
           Runner.set_rock_speed(ROCK_SPEED);
         }
         ThisThread::sleep_for(100ms);
