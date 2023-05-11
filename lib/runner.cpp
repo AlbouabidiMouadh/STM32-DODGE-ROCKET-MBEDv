@@ -26,17 +26,6 @@ void Runner::update() {
   add_score();
 }
 
-// void Runner::jump()
-// {
-//   for (int i = 0; i < 10; i++)
-//   {
-//     if (i < 5)
-//       _x = _x + 1;
-//     else
-//       _x = _x - 1;
-//     thread_sleep_for(100);
-//   }
-// }
 
 void Runner::set_velocity(Position2D v) {
   printf("Runner: Velocity\n");
