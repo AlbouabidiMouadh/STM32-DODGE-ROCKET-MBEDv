@@ -144,11 +144,14 @@ void game() {
         SCORES[2] = SCORES[1];
         SCORES[1] = SCORES[0];
         SCORES[0] = playerScore;
+        break;
       } else if (j == 1) {
         SCORES[1] = SCORES[0];
         SCORES[0] = playerScore;
+        break;
       } else if (j == 2) {
         SCORES[0] = playerScore;
+        break ;
       }
     }
   }
