@@ -38,7 +38,7 @@ int ROCK_SIZE = 4;
 int ROCK_SPEED = 2;
 int RUNNER_SIZE = 6;
 int RUNNER_SPEED = 4;
-long int SCORES[3] = [ 0, 0, 0 ];
+long int SCORES[3] = { 0, 0, 0 };
 int fps = 10;
 int playerScore = 0;
 
