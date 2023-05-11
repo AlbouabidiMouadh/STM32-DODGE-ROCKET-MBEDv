@@ -78,12 +78,9 @@ void game_over() { // splash screen
   while (1) {
     
     lcd.clear();
-    lcd.printString("  Game Over ", 0, 2);
-    lcd.refresh();
-    ThisThread::sleep_for(500ms);
-    lcd.clear();
-    lcd.printString("press button one", 4, 0);
-    lcd.printString("to play again", 4, 1);
+    lcd.printString("  Game Over ", 0, 0);
+    lcd.printString("press button one", 4, 1);
+    lcd.printString("to play again", 4, 2);
     lcd.printString("press button two", 4, 3);
     lcd.printString("to go to main menu", 4, 4);
     lcd.refresh();
@@ -112,7 +109,8 @@ void game() {
         lcd.clear();
         lcd.printString("Game Paused", 10, 1);
         lcd.printString("press blue ", 10, 3);
-        lcd.printString("button to resume", 0, 5);
+        lcd.printString("button to", 10, 4);
+        lcd.printString("resume", 10, 5);
         lcd.refresh();
         ThisThread::sleep_for(100ms);
       }
