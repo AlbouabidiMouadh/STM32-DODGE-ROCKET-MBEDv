@@ -18,8 +18,8 @@ N5110 lcd(PC_7, PA_9, PB_10, PB_5, PB_3, PA_10);
 Joystick joystick(PC_1, PC_0);
 DigitalIn buttonA(BUTTON1); // onboard user button
 RunnerEngine Runner;
-DigitalIn buttonOne(btn1);
-DigitalIn buttonTwo(btn2);
+InterruptIn buttonOne(btn1);
+InterruptIn buttonTwo(btn2);
 
 ///////////// prototypes ///////////////
 
@@ -38,7 +38,7 @@ int ROCK_SIZE = 4;
 int ROCK_SPEED = 2;
 int RUNNER_SIZE = 6;
 int RUNNER_SPEED = 4;
-long int SCORES[3] = { 0, 0, 0 };
+long int SCORES[3] = {0, 0, 0};
 int fps = 10;
 int playerScore = 0;
 
@@ -52,6 +52,8 @@ int main() {
 }
 
 void init() {
+  buttonOne.mode(PullNone);
+  buttonTwo.mode(PullNone);
   lcd.init(LPH7366_1);
   lcd.setContrast(0.5);
   joystick.init();
@@ -113,24 +115,24 @@ void game() {
         ThisThread::sleep_for(100ms);
       }
     }
-    playerScore = Runner.update(input, lcd); // update the game engine based on input
-    render();                          // draw frame on screen
-    thread_sleep_for(1000 / fps);      // and wait for one frame period - ms
+    playerScore =
+        Runner.update(input, lcd); // update the game engine based on input
+    render();                      // draw frame on screen
+    thread_sleep_for(1000 / fps);  // and wait for one frame period - ms
   }
-  int aux1, aux2 ;
+  int aux1, aux2;
   for (int j = 0; j < 3; j++) {
     if (playerScore > SCORES[j]) {
-        aux1 = SCORES[j];
-        SCORES[j] = playerScore;
-        if(j==0){
-          aux2 = SCORES[j+1];
-          SCORES[j+1] = aux1 ;
-          SCORES[j+2] = aux2;
-        }
-        else if(j==1){
-          aux2 = SCORES[j+1];
-          SCORES[j+1] = aux1 ;
-        }
+      aux1 = SCORES[j];
+      SCORES[j] = playerScore;
+      if (j == 0) {
+        aux2 = SCORES[j + 1];
+        SCORES[j + 1] = aux1;
+        SCORES[j + 2] = aux2;
+      } else if (j == 1) {
+        aux2 = SCORES[j + 1];
+        SCORES[j + 1] = aux1;
+      }
     }
   }
 };
@@ -200,7 +202,9 @@ void settings() {
         ThisThread::sleep_for(100ms);
       }
     }
-    if(buttonA.read() == 0) { break ;}
+    if (buttonA.read() == 0) {
+      break;
+    }
     ThisThread::sleep_for(100ms);
   }
 };
@@ -213,7 +217,9 @@ void score() {
     lcd.printString(to_string(SCORES[1]).c_str(), 4, 3);
     lcd.printString(to_string(SCORES[2]).c_str(), 4, 4);
     lcd.refresh();
-    if(buttonA.read() == 0) { break ;}
+    if (buttonA.read() == 0) {
+      break;
+    }
   }
 };
 
