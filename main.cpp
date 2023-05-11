@@ -246,6 +246,7 @@ void main_menu() {
       if (choosedLine == 1) {
         Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
         game();
+        game_over();
       } else if (choosedLine == 3) {
         score();
       } else if (choosedLine == 5) {
