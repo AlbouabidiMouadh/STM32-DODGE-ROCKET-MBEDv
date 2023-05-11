@@ -160,15 +160,15 @@ void settings() {
         if (Level == "normal") {
           Level = "hard";
           ROCK_SPEED += 2;
-          // Runner.set_rock_speed(ROCK_SPEED);
+          Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "hard") {
           Level = "easy";
           ROCK_SPEED -= 4;
-          // Runner.set_rock_speed(ROCK_SPEED);
+          Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "easy") {
           Level = "normal";
           ROCK_SPEED += 2;
-          // Runner.set_rock_speed(ROCK_SPEED);
+          Runner.set_rock_speed(ROCK_SPEED);
         }
         ThisThread::sleep_for(100ms);
       } else if (choosedSetting == 5) {
