@@ -80,7 +80,7 @@ void game_over() { // splash screen
     lcd.clear();
     lcd.printString("  Game Over ", 0, 2);
     lcd.refresh();
-    ThisThread::sleep_for(250ms);
+    ThisThread::sleep_for(500ms);
     lcd.clear();
     lcd.printString("press button one", 4, 0);
     lcd.printString("to play again", 4, 1);
@@ -112,7 +112,7 @@ void game() {
         lcd.clear();
         lcd.printString("Game Paused", 10, 1);
         lcd.printString("press blue ", 10, 3);
-        lcd.printString("button to resume", 5, 5);
+        lcd.printString("button to resume", 0, 5);
         lcd.refresh();
         ThisThread::sleep_for(100ms);
       }
@@ -122,7 +122,7 @@ void game() {
     render();                      // draw frame on screen
     thread_sleep_for(1000 / fps);  // and wait for one frame period - ms
   }
-  int aux1, aux2;
+
   for (int j = 0; j < 3; j++) {
     if (playerScore > SCORES[j]) {
       if (j == 0) {
@@ -246,6 +246,7 @@ void main_menu() {
     // waiting for the press of the 2nd button to choose
     if (buttonTwo.read() == 0) {
       if (choosedLine == 1) {
+        Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
         game();
       } else if (choosedLine == 3) {
         score();
