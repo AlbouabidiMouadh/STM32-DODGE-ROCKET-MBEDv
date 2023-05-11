@@ -80,10 +80,11 @@ void game_over() { // splash screen
     
     lcd.clear();
     lcd.printString("  Game Over ", 0, 0);
-    lcd.printString("press button one", 4, 1);
+    lcd.printString("press btn one", 4, 1);
     lcd.printString("to play again", 4, 2);
-    lcd.printString("press button two", 4, 3);
+    lcd.printString("press btn two", 4, 3);
     lcd.printString("to go to main menu", 4, 4);
+    lcd.printString(" menu", 10, 5);
     lcd.refresh();
     ThisThread::sleep_for(250ms);
     if (buttonOne.read() == 0) {
