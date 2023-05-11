@@ -129,7 +129,7 @@ void game() {
         }
         else if(j==1){
           aux2 = SCORES[j+1];
-        S CORES[j+1] = aux1 ;
+          SCORES[j+1] = aux1 ;
         }
     }
   }
