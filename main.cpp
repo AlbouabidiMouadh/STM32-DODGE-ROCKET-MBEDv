@@ -9,8 +9,8 @@
 
 ///////////// defines /////////////////////
 
-#define btn1 PC_1
-#define btn2 PC_2
+#define btn1 PB_0
+#define btn2 PA_4
 
 ///////////// objects ///////////////////
 
@@ -40,7 +40,7 @@ int RUNNER_SIZE = 6;
 int RUNNER_SPEED = 4;
 long int SCORES[3] = [ 0, 0, 0 ];
 int fps = 10;
-int score;
+int playerScore = 0;
 
 ////////////////////////////////////////
 
@@ -113,19 +113,24 @@ void game() {
         ThisThread::sleep_for(100ms);
       }
     }
-    score = Runner.update(input, lcd); // update the game engine based on input
+    playerScore = Runner.update(input, lcd); // update the game engine based on input
     render();                          // draw frame on screen
     thread_sleep_for(1000 / fps);      // and wait for one frame period - ms
   }
   int aux1, aux2 ;
   for (int j = 0; j < 3; j++) {
-    if (score > SCORES[j]) {
+    if (playerScore > SCORES[j]) {
         aux1 = SCORES[j];
-      SCORES[j] = score;
-      for (int k=j+1; k<3; k++){
-          aux2 = SCORES[k];
-          aux1
-      }
+        SCORES[j] = playerScore;
+        if(j==0){
+          aux2 = SCORES[j+1];
+          SCORES[j+1] = aux1 ;
+          SCORES[j+2] = aux2;
+        }
+        else if(j==1){
+          aux2 = SCORES[j+1];
+        S CORES[j+1] = aux1 ;
+        }
     }
   }
 };
@@ -155,15 +160,15 @@ void settings() {
         if (Level == "normal") {
           Level = "hard";
           ROCK_SPEED += 2;
-          Runner.set_rock_speed(ROCK_SPEED);
+          // Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "hard") {
           Level = "easy";
           ROCK_SPEED -= 4;
-          Runner.set_rock_speed(ROCK_SPEED);
+          // Runner.set_rock_speed(ROCK_SPEED);
         } else if (Level == "easy") {
           Level = "normal";
           ROCK_SPEED += 2;
-          Runner.set_rock_speed(ROCK_SPEED);
+          // Runner.set_rock_speed(ROCK_SPEED);
         }
         ThisThread::sleep_for(100ms);
       } else if (choosedSetting == 5) {
@@ -195,6 +200,7 @@ void settings() {
         ThisThread::sleep_for(100ms);
       }
     }
+    if(buttonA.read() == 0) { break ;}
     ThisThread::sleep_for(100ms);
   }
 };
@@ -202,8 +208,12 @@ void settings() {
 void score() {
   while (true) {
     lcd.clear();
-
+    lcd.printString("scores", 4, 0);
+    lcd.printString(to_string(SCORES[0]).c_str(), 4, 2);
+    lcd.printString(to_string(SCORES[1]).c_str(), 4, 3);
+    lcd.printString(to_string(SCORES[2]).c_str(), 4, 4);
     lcd.refresh();
+    if(buttonA.read() == 0) { break ;}
   }
 };
 
