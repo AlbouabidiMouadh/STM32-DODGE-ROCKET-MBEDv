@@ -70,5 +70,5 @@ bool RunnerEngine::check_rock_collision() {
   }
 }
 
-void set_rock_size(int size) { _rock.set_size(size); }
-void set_rock_speed(int speed) { _rock.set_speed(speed); }
+void RunnerEngine::set_rock_size(int size) { _rock.set_size(size); }
+void RunnerEngine::set_rock_speed(int speed) { _rock.set_speed(speed); }
