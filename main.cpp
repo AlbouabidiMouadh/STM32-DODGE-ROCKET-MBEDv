@@ -5,6 +5,7 @@
 #include "RunnerEngine.h"
 #include "Utils.h"
 #include "mbed.h"
+#include <cstdio>
 #include <string>
 
 ///////////// defines /////////////////////
@@ -85,11 +86,26 @@ void game_over() { // splash screen
     lcd.printString("to go to main menu", 4, 4);
     lcd.refresh();
     ThisThread::sleep_for(250ms);
-    if (buttonOne.read()) {
+    if (buttonOne.read() == 0) {
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
+        printf("button 111 clickedd");
       Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
       game();
       game_over();
-    } else if (buttonTwo.read()) {
+    } else if (buttonTwo.read() == 0) {
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
+        printf("button clickedd");
       Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
       main_menu();
     }
