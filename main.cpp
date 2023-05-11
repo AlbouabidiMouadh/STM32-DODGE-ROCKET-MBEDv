@@ -38,7 +38,7 @@ int ROCK_SIZE = 4;
 int ROCK_SPEED = 2;
 int RUNNER_SIZE = 6;
 int RUNNER_SPEED = 4;
-long int SCORES[3] =  {0, 0, 0 };
+long int SCORES[3] = {0, 0, 0};
 int fps = 10;
 int playerScore = 0;
 
@@ -76,7 +76,7 @@ void welcome() { // splash screen
 
 void game_over() { // splash screen
   while (1) {
-    Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
+    
     lcd.clear();
     lcd.printString("  Game Over ", 0, 2);
     lcd.refresh();
@@ -89,9 +89,11 @@ void game_over() { // splash screen
     lcd.refresh();
     ThisThread::sleep_for(250ms);
     if (buttonOne.read()) {
+      Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
       game();
       game_over();
     } else if (buttonTwo.read()) {
+      Runner.init(RUNNER_SIZE, RUNNER_SPEED, ROCK_SIZE, ROCK_SPEED);
       main_menu();
     }
     ThisThread::sleep_for(100ms);
@@ -115,24 +117,24 @@ void game() {
         ThisThread::sleep_for(100ms);
       }
     }
-    playerScore = Runner.update(input, lcd); // update the game engine based on input
-    render();                          // draw frame on screen
-    thread_sleep_for(1000 / fps);      // and wait for one frame period - ms
+    playerScore =
+        Runner.update(input, lcd); // update the game engine based on input
+    render();                      // draw frame on screen
+    thread_sleep_for(1000 / fps);  // and wait for one frame period - ms
   }
-  int aux1, aux2 ;
+  int aux1, aux2;
   for (int j = 0; j < 3; j++) {
     if (playerScore > SCORES[j]) {
-        aux1 = SCORES[j];
-        SCORES[j] = playerScore;
-        if(j==0){
-          aux2 = SCORES[j+1];
-          SCORES[j+1] = aux1 ;
-          SCORES[j+2] = aux2;
-        }
-        else if(j==1){
-          aux2 = SCORES[j+1];
-          SCORES[j+1] = aux1 ;
-        }
+      if (j == 0) {
+        SCORES[2] = SCORES[1];
+        SCORES[1] = SCORES[0];
+        SCORES[0] = playerScore;
+      } else if (j == 1) {
+        SCORES[1] = SCORES[0];
+        SCORES[0] = playerScore;
+      } else if (j == 2) {
+        SCORES[0] = playerScore;
+      }
     }
   }
 };
@@ -202,7 +204,9 @@ void settings() {
         ThisThread::sleep_for(100ms);
       }
     }
-    if(buttonA.read() == 0) { break ;}
+    if (buttonA.read() == 0) {
+      break;
+    }
     ThisThread::sleep_for(100ms);
   }
 };
@@ -215,7 +219,9 @@ void score() {
     lcd.printString(to_string(SCORES[1]).c_str(), 4, 3);
     lcd.printString(to_string(SCORES[2]).c_str(), 4, 4);
     lcd.refresh();
-    if(buttonA.read() == 0) { break ;}
+    if (buttonA.read() == 0) {
+      break;
+    }
   }
 };
 
