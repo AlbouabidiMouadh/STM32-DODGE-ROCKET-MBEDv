@@ -10,8 +10,7 @@
 
 
 
-* @endcode
-*/
+
 class Joystick
 {
 public:
