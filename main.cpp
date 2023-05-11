@@ -160,8 +160,8 @@ void settings() {
     lcd.clear();
     lcd.printString(">", 0, choosedSetting);
     lcd.printString("SETTINGS", 4, 1);
-    lcd.printString(("Level: " + Level).c_str(), 4, 3);
-    lcd.printString(("Brightness: " + to_string(Brightness)).c_str(), 4, 5);
+    lcd.printString(("Level:"+ Level).c_str(), 4, 3);
+    lcd.printString(("Brightness:" + to_string(Brightness)).c_str(), 4, 5);
     lcd.refresh();
     ThisThread::sleep_for(100ms);
     if (buttonOne.read() == 0) {
